@@ -1,0 +1,177 @@
+/* general settings */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* navbar */
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #FFF;
+}
+.navbar .logo{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.navbar .nav-links{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+.navbar .nav-links a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+.navbar .nav-links a:hover{
+    color: #00bcd4;
+}
+
+/* search container */
+.search-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.search-input{
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+.search-btn{
+    padding: 5px 10px;
+    border: none;
+    background-color: #00bcd4;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.search-btn:hover{
+    background-color: #019aaa;
+}
+
+/* hamburger default style */
+.hamburger{
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    
+}
+.hamburger span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* active hamburger (cross) */
+.hamburger[aria-expanded="true"] span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger[aria-expanded="true"] span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+/* reponsive design */
+@media (max-width: 768px) {
+    .search-container {
+        display: none;
+    }
+    .hamburger{
+        display: flex;
+    }
+    .nav-links{
+        
+        position: absolute;
+        top: 46px;
+        right: -200px;
+        background-color: #0077cc;
+        flex-direction: column;
+        width: 200px;
+        height: 100vh;
+        padding: 10px;
+        border: 1px solid #005b99;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s ease;
+    }
+    .nav-links.active{
+        right: 0;
+    }
+    .nav-links li{
+        text-align: right;
+        padding: 10px 0;
+    }
+}
+
+/* AD section */
+.ad-section{
+    background-color: #f4f4f4;
+    border: 1px dashed #ccc;
+    text-align: center;
+    padding: 20px;
+    margin: 20px 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* blog posts section */
+.blog-posts-container{
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px 1fr));
+    gap: 20px
+}
+.blog-post{
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+.blog-post:hover{
+    transform: scale(1.02);
+}
+.blog-post h2{
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    color: #0077cc;
+}
+.blog-post p{
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 15px;
+}
+.read-more-btn{
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #0077cc;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.read-more-btn:hover{
+    background-color: #005b99;
+}
+/* Footer (Optional Placeholder) */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #0077cc;
+    color: white;
+    margin-top: 20px;
+  }

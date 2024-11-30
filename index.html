@@ -7,9 +7,37 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Hello</h1>
-    <p>My name is Ratul and i am new to blogging</p>
 
+    <!-- navbar -->
+    <nav class="navbar">
+        <div class="logo">Nub Blog</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#subscribe">Subscribe</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" placeholder="Search..." class="search-input">
+            <button class="search-btn">Search</button>
+        </div>
+        <div class="hamburger" aria-expanded="false" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    <!-- Ad section  -->
+     <section class="ad-section">
+        <p>Advertise Here! Your ad can appear in this space.</p>
+     </section>
+
+    <!-- Blog post section   -->
+
+    
+    <main class="blog-posts-container" id="blog-posts">
+        <!-- Posts will be dinamically loaded here -->
+    </main>
     <script src="app.js"></script>
 </body>
 </html>
