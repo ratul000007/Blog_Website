@@ -72,5 +72,36 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     init();
-});
 
+    // Full Post Logic (only for post.html)
+    if (document.getElementById("full-post-container")) {
+        const fullPostContainer = document.getElementById("full-post-container");
+
+        const loadFullPost = async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get("id");
+
+            try {
+                if (!allPosts.length) {
+                    // If `allPosts` is empty, fetch posts
+                    await fetchPosts();
+                }
+                const post = allPosts.find(p => p.id == postId);
+
+                if (post) {
+                    fullPostContainer.innerHTML = `
+                        <h1>${post.title}</h1>
+                        <p><small>By ${post.author} on ${post.date}</small></p>
+                        <p>${post.content}</p>
+                    `;
+                } else {
+                    fullPostContainer.innerHTML = "<p>Post not found.</p>";
+                }
+            } catch (error) {
+                fullPostContainer.innerHTML = "<p>Error loading post.</p>";
+            }
+        };
+
+        loadFullPost();
+    }
+});
