@@ -175,3 +175,73 @@ footer {
     color: white;
     margin-top: 20px;
   }
+
+  /* General Reset */
+body, h1, h2, h3, p, a, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 0 20px;
+}
+
+/* Header Styling */
+header {
+    background-color: #007bff;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem; /* Smaller font size */
+    padding: 5px 10px; /* Adjust padding for a smaller button */
+    background-color: #0056b3; /* Add a button-like background */
+    border-radius: 5px; /* Rounded corners */
+    display: inline-block; /* Ensure it looks like a button */
+}
+
+header a:hover {
+    background-color: #003f7f; /* Darker background on hover */
+    text-decoration: none; /* Keep it consistent */
+}
+
+/* Full Post Container */
+main#full-post-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+main#full-post-container h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+main#full-post-container p {
+    margin: 10px 0;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+main#full-post-container small {
+    display: block;
+    margin-bottom: 20px;
+    color: #888;
+    font-style: italic;
+}
+.navbar .nav-links a:focus, .read-more-btn:focus {
+    outline: 2px solid #00bcd4; /* Or any color that stands out */
+}
