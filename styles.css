@@ -132,15 +132,16 @@
 .blog-posts-container{
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px
 }
 .blog-post{
-    background: #ffffff;
+    background-color: white;
     border: 1px solid #ddd;
+    padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    margin-bottom: 20px;
     transition: transform 0.3s ease;
 }
 .blog-post:hover{
@@ -215,33 +216,87 @@ header a:hover {
 }
 
 /* Full Post Container */
-main#full-post-container {
+
+.post-container {
     max-width: 800px;
-    margin: 30px auto;
+    margin: 20px auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-main#full-post-container h1 {
+.post-container h2 {
     font-size: 2rem;
     margin-bottom: 10px;
+    color: #0077cc;
 }
 
-main#full-post-container p {
-    margin: 10px 0;
+.post-container p {
+    margin-bottom: 15px;
+    line-height: 1.6;
     font-size: 1rem;
-    line-height: 1.8;
-    color: #555;
+    color: #333;
 }
 
-main#full-post-container small {
+.post-container img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.post-container a {
+    color: #0077cc;
+    text-decoration: underline;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.post-container a:hover {
+    color: #005b99;
+}
+
+/* Styling Author and Date Info */
+.post-container small {
     display: block;
     margin-bottom: 20px;
-    color: #888;
     font-style: italic;
+    color: #666;
 }
+
+/* Adding Responsive Padding */
+@media (max-width: 768px) {
+    .post-container {
+        padding: 10px;
+    }
+}
+
 .navbar .nav-links a:focus, .read-more-btn:focus {
     outline: 2px solid #00bcd4; /* Or any color that stands out */
+}
+/* Go Back Button Styling */
+.go-back {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.go-back-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.go-back-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.go-back-btn:focus {
+    outline: 2px solid #00bcd4;
 }

@@ -4,13 +4,13 @@
         "title": "Welcome to Nub Blog!",
         "author": "Nub Blog",
         "date": "2024-11-30",
-        "content": "This is the full content of the first blog.This is the full content of the first blog.This is the full content of the first blog.This is the full content of the first blog.This is the full content of the first blog.This is the full content of the first blog.This is the full content of the first blog.This is the full content of the first blog.This is the full content of the first blog.This is the full content of the first blog.This is the full content of the first blog.This is the full content of the first blog."
+        "content": "<p>This is the first paragraph of the first blog.</p><p>This is the second paragraph of the first blog, providing more information.</p><p><img src='https://via.placeholder.com/300' alt='Welcome Image'> Here is an image and a <a href='https://example.com' target='_blank'>link</a> to learn more.</p>"
     },
     {
         "id": 2,
         "title": "How to grow your blog!",
         "author": "Nub Blog",
         "date": "2024-12-02",
-        "content": "This is the full content of the second blog."
+        "content": "<p>This is the first paragraph of the second blog, offering some tips.</p><p>This is the second paragraph with more detailed advice.</p><p><img src='https://via.placeholder.com/300' alt='Grow Your Blog'> Check out this <a href='https://example.com/blog-growth' target='_blank'>guide</a> to grow your blog.</p>"
     }
 ]
