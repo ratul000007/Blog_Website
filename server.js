@@ -2,9 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
+require('dotenv').config(); // Load environment variables from .env file
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000; // Use environment variable for port
 
 // Middleware
 app.use(bodyParser.json());
@@ -14,18 +15,18 @@ app.use(cors());
 app.post('/contact', (req, res) => {
     const { name, email, message } = req.body;
 
-    // Configure nodemailer transporter
+    // Configure nodemailer transporter using environment variables
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'your-email@gmail.com', // Replace with your email
-            pass: 'your-email-password', // Replace with your email password or app password
+            user: process.env.EMAIL, // Use email from .env file
+            pass: process.env.EMAIL_PASSWORD, // Use password from .env file
         },
     });
 
     const mailOptions = {
         from: email,
-        to: 'your-email@gmail.com', // Replace with your email
+        to: process.env.EMAIL, // Use email from .env file
         subject: `Message from ${name}`,
         text: message,
     };

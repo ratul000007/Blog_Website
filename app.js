@@ -3,6 +3,7 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const path = require('path');
 const dotenv = require('dotenv');
+const fs = require('fs');
 
 // Load environment variables from .env file
 dotenv.config();
@@ -13,6 +14,32 @@ const app = express();
 // Middleware
 app.use(express.json());  // To parse JSON request bodies
 app.use(express.static(path.join(__dirname, 'public')));  // Serve static files from 'public'
+
+// In-memory post storage (use a file or database in production)
+let posts = [];
+
+// Load posts from posts.json (Simulating storage)
+const loadPosts = () => {
+    try {
+        const data = fs.readFileSync(path.join(__dirname, 'posts.json'), 'utf8');
+        posts = JSON.parse(data);
+    } catch (error) {
+        console.error("Error loading posts:", error);
+        posts = []; // Fallback to an empty array if there's an error
+    }
+};
+
+// Save posts to posts.json (for simulating persistent storage)
+const savePosts = () => {
+    try {
+        fs.writeFileSync(path.join(__dirname, 'posts.json'), JSON.stringify(posts, null, 2));
+    } catch (error) {
+        console.error("Error saving posts:", error);
+    }
+};
+
+// Load initial posts from file
+loadPosts();
 
 // Nodemailer setup (use credentials from .env)
 const transporter = nodemailer.createTransport({
@@ -69,6 +96,38 @@ app.post('/subscribe', (req, res) => {
             res.status(200).send('Subscription successful!');
         }
     });
+});
+
+// Route to get paginated posts (for infinite scrolling)
+app.get('/posts', (req, res) => {
+    const { page = 1, limit = 5 } = req.query;
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+
+    const paginatedPosts = posts.slice(startIndex, endIndex);
+    res.json(paginatedPosts);
+});
+
+// Route to add a new post (for dynamic post creation)
+app.post('/add-post', (req, res) => {
+    const { title, author, content } = req.body;
+
+    if (!title || !author || !content) {
+        return res.status(400).send('Missing title, author, or content');
+    }
+
+    const newPost = {
+        id: posts.length + 1,
+        title,
+        author,
+        date: new Date().toISOString(),
+        content,
+    };
+
+    posts.push(newPost);
+    savePosts(); // Save to file
+
+    res.status(201).json(newPost);
 });
 
 // Serve your static files (like HTML, CSS, JS) from the 'public' folder
@@ -149,25 +208,21 @@ if (document.getElementById("blog-posts")) {
     const postContainer = document.getElementById("blog-posts");
     const postsPerPage = 5;
     let currentPage = 1;
-    let allPosts = [];
 
-    const fetchPosts = async () => {
+    const fetchPosts = async (page = 1) => {
         try {
-            const response = await fetch("posts.json");
+            const response = await fetch(`/posts?page=${page}&limit=${postsPerPage}`);
             if (!response.ok) throw new Error("Failed to fetch posts");
-            allPosts = await response.json();
+            const posts = await response.json();
+            renderPosts(posts);
         } catch (error) {
             console.error("Error fetching posts:", error);
             postContainer.innerHTML = "<p>Error loading posts.</p>";
         }
     };
 
-    const renderPosts = (page) => {
-        const start = (page - 1) * postsPerPage;
-        const end = page * postsPerPage;
-        const currentPosts = allPosts.slice(start, end);
-
-        currentPosts.forEach(post => {
+    const renderPosts = (posts) => {
+        posts.forEach(post => {
             const postElement = document.createElement("div");
             postElement.classList.add("blog-post");
             postElement.innerHTML = `
@@ -183,16 +238,13 @@ if (document.getElementById("blog-posts")) {
     const handleScroll = () => {
         const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
         if (scrollTop + clientHeight >= scrollHeight - 10) {
-            if ((currentPage - 1) * postsPerPage < allPosts.length) {
-                currentPage++;
-                renderPosts(currentPage);
-            }
+            currentPage++;
+            fetchPosts(currentPage);
         }
     };
 
     const init = async () => {
-        await fetchPosts();
-        renderPosts(currentPage);
+        await fetchPosts(currentPage);
         window.addEventListener("scroll", handleScroll);
     };
 
@@ -223,8 +275,8 @@ if (document.getElementById("full-post-container")) {
                 fullPostContainer.innerHTML = "<p>Post not found.</p>";
             }
         } catch (error) {
+            console.error("Error loading full post:", error);
             fullPostContainer.innerHTML = "<p>Error loading post.</p>";
-            console.error(error);
         }
     };
 
