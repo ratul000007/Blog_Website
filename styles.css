@@ -300,3 +300,129 @@ header a:hover {
 .go-back-btn:focus {
     outline: 2px solid #00bcd4;
 }
+
+/* About Section */
+.about-section {
+    padding: 20px;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.about-section h2 {
+    font-size: 2rem;
+    color: #0077cc;
+    margin-bottom: 10px;
+}
+
+.about-section p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-section h2 {
+    font-size: 2rem;
+    color: #0077cc;
+    margin-bottom: 15px;
+}
+
+.contact-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-section input, .contact-section textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.contact-section input:focus, .contact-section textarea:focus {
+    border-color: #0077cc;
+}
+
+.submit-btn {
+    padding: 10px 20px;
+    background-color: #0077cc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #005b99;
+}
+
+/* Subscribe Section */
+.subscribe-section {
+    padding: 20px;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subscribe-section h2 {
+    font-size: 2rem;
+    color: #0077cc;
+    margin-bottom: 10px;
+}
+
+.subscribe-section p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+.subscribe-section form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.subscribe-section input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+    outline: none;
+}
+
+.subscribe-section input:focus {
+    border-color: #0077cc;
+}
+
+.subscribe-btn {
+    padding: 10px 20px;
+    background-color: #0077cc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.subscribe-btn:hover {
+    background-color: #005b99;
+}
